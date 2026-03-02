@@ -175,6 +175,14 @@ AWS automatically creates an IAM role that allows Step Functions to invoke Lambd
 
 4. Click **Create state machine**
 
+#### sample input
+
+```
+{
+      "name": "AWS Lab"
+    }
+```
+
 ---
 
 # ▶️ Executing the State Machine
