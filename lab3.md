@@ -178,4 +178,129 @@ Add multiple students.
   "semester": 3,
   "cgpa": 8.9
 }
+```
+---
+
+### Step 4: Perform Query
+
+Navigate to: Explore Table → Query
+
+Select index:branch-index
+
+Enter condition:branch = CSE
+
+Run the query.
+
+###Step 5: Perform Scan
+
+Navigate to:Explore Table → Scan
+
+Click Run.
+
+Scan retrieves all items in the table.
+
+##### Comparison
+Operation	|Performance|	Cost<br>
+Query	    |Fast       |	Low<br>
+Scan	    |Slow       |	High<br>
+Result
+
+A Global Secondary Index (branch-index) was created successfully.
+Query operations using the index retrieved filtered results efficiently,
+while Scan operations retrieved all items in the table.
+
+
+
+---
+
+# Amazon DynamoDB Lab — Part C
+## TTL and DynamoDB Streams
+
+---
+
+## Objective
+
+To implement automatic data expiration using TTL and enable
+event-driven processing using DynamoDB Streams.
+
+---
+
+## Introduction
+
+DynamoDB provides advanced features such as:
+
+- TTL (Time To Live)
+- DynamoDB Streams
+
+TTL automatically deletes expired items.
+Streams capture table modification events.
+
+---
+
+## Procedure
+
+### Step 1: Create Table
+
+Navigate to:AWS Console → DynamoDB → Create Table
+
+
+Enter:
+
+Table Name:UserSessions
+
+
+Partition Key:session_id (String)
+
+
+Billing Mode:On-Demand
+
+Click **Create Table**.
+
+---
+
+### Step 2: Insert Sample Item
+
+Navigate to:Explore Table → Create Item → JSON View
+
+
+Insert:
+
+```json
+{
+  "session_id": "abc123",
+  "user": "devidas",
+  "expiry_time": 1735689600
+}
+```
+### Step 3: Enable TTL
+
+- Go to:Additional Settings → Time to Live
+
+- Enable TTL.
+
+- Enter attribute:expiry_time
+
+- Save changes.
+
+### Step 4: Enable DynamoDB Streams
+
+- Navigate to:Exports and Streams
+
+- Click Enable Stream.
+
+- Select:New and Old Images
+
+- Save.
+
+#### Result
+
+TTL was enabled to automatically remove expired session records.
+DynamoDB Streams were enabled to capture data modification events,
+demonstrating an event-driven serverless architecture.
+
+#### Learning Outcome
+Understand TTL functionality
+Learn DynamoDB Streams
+Build event-driven architectures
+
 
